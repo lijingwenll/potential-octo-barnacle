@@ -17,10 +17,26 @@ http.createServer((request,response) => {
               width: 100px;
               height: 100px;
             }
+            #wrap{
+              width: 50px;
+              height: 50px;
+            }
+            span{
+              color: red;
+            }
+            .spec{
+              background-color: green;
+            }
+            .multi{
+              color: yellow;
+            }
           </style>
         </head>
         <body>
           <div class="box">box</div>
+          <selector id="wrap">wrap</selector>
+          <span>span</span>
+          <p class="multi spec">spec</p>
         </body>
       </html>
     `);
