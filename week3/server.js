@@ -14,29 +14,28 @@ http.createServer((request,response) => {
         <head>
           <style>
             .box{
-              width: 100px;
+              width: 500px;
+              height: 200px;
+              display: flex;
+              justify-content: space-between;
+              background-color: rgb(255,0,0);
+            }
+            #id{
+              width: 200px;
               height: 100px;
+              background-color: rgb(0,255,0);
             }
-            #wrap{
-              width: 50px;
-              height: 50px;
-            }
-            span{
-              color: red;
-            }
-            .spec{
-              background-color: green;
-            }
-            .multi{
-              color: yellow;
+            .box-item{
+              flex: 1;
+              background-color: rgb(0,0,255);
             }
           </style>
         </head>
         <body>
-          <div class="box">box</div>
-          <selector id="wrap">wrap</selector>
-          <span>span</span>
-          <p class="multi spec">spec</p>
+          <div class="box">
+            <div id="id"></div>
+            <div class="box-item"></div>
+          </div>
         </body>
       </html>
     `);
