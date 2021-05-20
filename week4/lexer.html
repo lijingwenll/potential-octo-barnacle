@@ -6,7 +6,6 @@
         this.table = new Map();
         this.regexp = new RegExp(this.compileRegExp(source,root,0).source,flag);
         console.log(this.regexp);
-        console.log(this.table);
       }
       compileRegExp(source, name, start) {
         if (source[name] instanceof RegExp) return {
@@ -18,12 +17,12 @@
           this.table.set(start + length,$1);
           // this.table.set($1,start + length);
 
-          ++length;
+          length++;
 
           let r = this.compileRegExp(source, $1, start+length);
           
           length += r.length;
-          return "("+r.source+")";
+          return "(" + r.source + ")";
         });
 
         return {
@@ -55,7 +54,7 @@
           InputElement: "<Whitespace>|<LineTerminator>|<Comments>|<Token>",
           Whitespace: / /,
           LineTerminator: /\n/,
-          Comments: /\/\*([^*]|\*[^\/])*\*\/|\/\/[^\n]*/,
+          Comments: /\/\*(?:[^*]|\*[^\/])*\*\/|\/\/[^\n]*/,
           Token: "<Literal>|<Keywords>|<Identifer>|<Punctuator>",
           Literal:
             "<NumericLiteral>|<BooleanLiteral>|<StringLiteral>|<NullLiteral>",
@@ -64,9 +63,9 @@
           StringLiteral: /\"(?:[^\"\n]|\\[\s\S])*\"|\'(?:[^'\n]|\\[\s\S])*\'/,
           NullLiteral: /null/,
           Identifer: /[a-zA-Z_$][a-zA-Z0-9_$]*/,
-          Keywords: /if|else|for|function/,
+          Keywords: /if|else|for|function|let/,
           Punctuator:
-            /\+|\,|\?|\:|\}|\{|\(|\=|\<|\+\+|\=\=|\=\>|\)|\*|\.|\[|\]|;/,
+            /\+|\,|\?|\:|\}|\{|\(|\=|\<|\+\+|\=\=|\=\>|\)|\*|\.|\[|\]|\;/,
         }, 
         "g",
         "InputElement"
